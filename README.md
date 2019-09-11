@@ -11,7 +11,7 @@ This is our web systems development major project.
 * 0425 274 059
 
 ## Beji's contact details
-0412 631 820
+* 0412 631 820
 
 ## Scott's duties
 * The My details link
