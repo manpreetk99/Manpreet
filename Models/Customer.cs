@@ -12,5 +12,7 @@ namespace BadgerysCreekHotel.Models
         public string GivenName { get; set; }
         public string PostCode { get; set; }
         public ICollection<Booking> TheBookings { get; set; }
+
+        public int newProperty { get; set; }
     }
 }
