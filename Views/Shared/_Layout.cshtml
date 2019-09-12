@@ -31,8 +31,30 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    @if (User.IsInRole("Customer"))
+                    {
+                        <li><a asp-area="" asp-controller="MyDetails" asp-action="Index">My Details</a></li>
+                    }
+                    @if (User.IsInRole("Customer"))
+                    {
+                        <li><a asp-area="" asp-controller="BookRoom" asp-action="Index">Book A Room</a></li>
+                    }
+                    @if (User.IsInRole("Customer"))
+                    {
+                        <li><a asp-area="" asp-controller="SearchRooms" asp-action="Index">Search Rooms</a></li>
+                    }
+                    @if (User.IsInRole("Customer"))
+                    {
+                        <li><a asp-area="" asp-controller="MyBookings" asp-action="Index">My Bookings</a></li>
+                    }
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li><a asp-area="" asp-controller="ManageBookings" asp-action="Index">Manage Bookings</a></li>
+                    }
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li><a asp-area="" asp-controller="Statistics" asp-action="Index">Statistics</a></li>
+                    }
                 </ul>
                 <partial name="_LoginPartial" />
             </div>
