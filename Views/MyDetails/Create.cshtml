@@ -1,19 +1,18 @@
 ﻿@model BadgerysCreekHotel.Models.Customer
+
 @using Microsoft.AspNetCore.Identity
-@inject  UserManager<IdentityUser> UserManager
+
+@inject UserManager<IdentityUser> UserManager
 
 @{
-    ViewData["Title"] = "Update My Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Index";
 }
 
-<h2>Update My details</h2>
+<h2>My details Creation Page</h2>
 
-<h4>Customer</h4>
-<hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="UpdateDetails">
+        <form asp-action="CreateDetails">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Email" />
             <div class="form-group">
@@ -37,8 +36,6 @@
         </form>
     </div>
 </div>
-
-
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
