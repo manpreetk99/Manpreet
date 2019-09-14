@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using BadgerysCreekHotel.Models;
 
 namespace BadgerysCreekHotel.Data
 {
@@ -12,5 +14,8 @@ namespace BadgerysCreekHotel.Data
             : base(options)
         {
         }
+        public DbSet<BadgerysCreekHotel.Models.Customer> Customer { get; set; }
+        public DbSet<BadgerysCreekHotel.Models.Booking> Booking { get; set; }
+        public DbSet<BadgerysCreekHotel.Models.Room> Room { get; set; }
     }
 }
