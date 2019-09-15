@@ -35,6 +35,8 @@ namespace BadgerysCreekHotel.Controllers
             }
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateDetails([Bind("Email, GivenName, Surname, PostCode")] Customer customer)
         {
             if (ModelState.IsValid)
@@ -47,9 +49,18 @@ namespace BadgerysCreekHotel.Controllers
             return View(customer);
         }
 
-        public IActionResult UpdateDetails()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdateDetails([Bind("Email, GivenName, Surname, PostCode")] Customer customer)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                _context.Update(customer);
+                await _context.SaveChangesAsync();
+
+                return View("~/Views/MyDetails/Success.cshtml", customer);
+            }
+            return View(customer);
         }
     }
 }

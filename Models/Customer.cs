@@ -19,7 +19,8 @@ namespace BadgerysCreekHotel.Models
         /* Required; Length ranges between 2 and 20 
          * characters inclusive; Can only consist 
          * of English letters, hyphen and apostrophe */
-        [RegularExpression(@"[a-zA-Z- ']")]
+        [RegularExpression(@"^[a-zA-Z' -]{2,20}$",
+        ErrorMessage = "Can only consist of English letters, hyphen and apostrophe.")]
         [StringLength(20, MinimumLength = 2)]
         [Required]
         public string Surname { get; set; }
@@ -27,7 +28,8 @@ namespace BadgerysCreekHotel.Models
         /* Required; Length ranges between 2 and 20 
         * characters inclusive; Can only consist 
         * of English letters, hyphen and apostrophe */
-        [RegularExpression(@"[a-zA-Z- ']")]
+        [RegularExpression(@"^[a-zA-Z' -]{2,20}$",
+        ErrorMessage = "Can only consist of English letters, hyphen and apostrophe.")]
         [StringLength(20, MinimumLength = 2)]
         [Required]
         [Display(Name ="Given Name")]
@@ -36,6 +38,8 @@ namespace BadgerysCreekHotel.Models
         //Exactly 4 digits
         [Required]
         [StringLength(4, MinimumLength = 4)]
+        [RegularExpression(@"^[0-9]{4,4}$",
+        ErrorMessage = "The Post code must be a 4 digit number sequence.")]
         [DataType(DataType.PostalCode)]
         [Display(Name ="Post Code")]
         public string PostCode { get; set; }
