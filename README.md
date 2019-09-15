@@ -22,3 +22,22 @@ This is our web systems development major project.
 
 ## Beji's duties
 * The book a room link
+
+
+## Finished Tasks
+* Links for logged in customers
+* Links for logged-in administrators
+* Room.cs
+* Customer.cs
+* Booking.cs
+* Migration of above models to database
+* The My details link fully functional
+
+## To do
+* Search rooms link
+* Book a room link
+* My bookings link
+* Manage bookings link
+* Statistics
+* Home page layout
+* Our own page styling.
