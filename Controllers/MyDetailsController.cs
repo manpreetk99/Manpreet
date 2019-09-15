@@ -43,8 +43,7 @@ namespace BadgerysCreekHotel.Controllers
             {
                 _context.Add(customer);
                 await _context.SaveChangesAsync();
-
-                return View("~/Views/MyDetails/Success.cshtml", customer);
+                return SuccessPageReturn(customer);
             }
             return View(customer);
         }
@@ -57,10 +56,16 @@ namespace BadgerysCreekHotel.Controllers
             {
                 _context.Update(customer);
                 await _context.SaveChangesAsync();
-
-                return View("~/Views/MyDetails/Success.cshtml", customer);
+                return SuccessPageReturn(customer);
             }
             return View(customer);
+        }
+
+        //Displays a success page for 3 seconds and then redirect to the home page.
+        private IActionResult SuccessPageReturn(Customer customer)
+        {
+            Response.Headers.Add("REFRESH", "3; URL = /");
+            return View("~/Views/MyDetails/Success.cshtml", customer);
         }
     }
 }
