@@ -13,12 +13,11 @@ namespace BadgerysCreekHotel.Models
         //Meaning the level of this room; Exactly one character of ‘G’, ‘1’, ‘2’, or ‘3’.Required.
         [StringLength(1, MinimumLength = 1)]
         [Required]
-        [RegularExpression(@"[G123]")]
+        [RegularExpression(@"[G123]{1}")]
         public string Level { get; set; }
 
         //Meaning the number of beds in the room; can only be 1, 2, or 3.
-        [StringLength(1, MinimumLength = 1)]
-        [RegularExpression(@"[123]")]
+        [RegularExpression(@"[123]{1}")]
         public int BedCount { get; set; }
 
         //Meaning the price per night; Between $50 and $300.
