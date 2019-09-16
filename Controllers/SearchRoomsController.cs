@@ -2,17 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BadgerysCreekHotel.Data;
 using BadgerysCreekHotel.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BadgerysCreekHotel.Controllers
 {
     [Authorize(Roles = "Customer")]
     public class SearchRoomsController : Controller
     {
+        private readonly ApplicationDbContext _context;
 
+        public SearchRoomsController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
         //Probably delete this
         public IActionResult Index()
         {
@@ -40,11 +49,19 @@ namespace BadgerysCreekHotel.Controllers
                 )
              */
 
-        public IActionResult SearchRooms([Bind("BedCount", "CheckIn", "CheckOut")] RoomSearch searchParameters)//
+        public async Task<IActionResult> SearchRooms([Bind("BedCount", "CheckIn", "CheckOut")] RoomSearch searchParameters)//
         {
-            string query = "SELECT ID, 'Level', BedCount, Price FROM Room WHERE NOT EXISTS ( SELECT * FROM Booking WHERE mydate >= CheckIn and mydate <= CheckOut)";
-            var occupationStart = new SqliteParameter("mydate", searchParameters.CheckIn);
-            var occupationEnd = new SqliteParameter("mydate", searchParameters.CheckOut);
+            string query = "SELECT Room.ID, Level, BedCount, Booking.CheckIn, Booking.CheckOut, Booking.CustomerEmail, Room.Price " +
+                "FROM Room LEFT JOIN Booking ON Room.ID = Booking.RoomID " +
+                "WHERE Room.ID NOT IN(    " +
+                    "SELECT Room.ID " +
+                    "FROM Room " +
+                    "LEFT JOIN Booking " +
+                    "ON Room.ID = Booking.RoomID " +
+                    "WHERE (date(@INCOMINGSTART) >= date(checkIn) and date(@INCOMINGSTART) <= date(checkOut)) or (date(@INCOMINGEND) <= date(checkOut) and date(@INCOMINGEND) >= date(CheckIn)))";
+            var occupationStart = new SqliteParameter("INCOMINGSTART", searchParameters.CheckIn);
+            var occupationEnd = new SqliteParameter("INCOMINGEND", searchParameters.CheckOut);
+            var freeRooms = await _context.Room.FromSql(query, occupationStart, occupationEnd).ToListAsync();
             if (ModelState.IsValid)
             {
                 return View("/");
