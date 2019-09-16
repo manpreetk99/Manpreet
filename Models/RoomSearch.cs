@@ -11,6 +11,7 @@ namespace BadgerysCreekHotel.Models
     public class RoomSearch
     {
         public List<SelectListItem> Beds;
+        public List<Room> AvailableRooms { get; set; }
         public RoomSearch()
         {
             Beds = new List<SelectListItem>
@@ -22,10 +23,20 @@ namespace BadgerysCreekHotel.Models
             this.CheckIn = DateTime.Now;
             this.CheckOut = DateTime.Now;
         }
+        //Meaning the level of this room; Exactly one character of ‘G’, ‘1’, ‘2’, or ‘3’.Required.
+        [StringLength(1, MinimumLength = 1)]
+        [Required]
+        [RegularExpression(@"[G123]{1}")]
+        public string Level { get; set; }
+
         //Meaning the number of beds in the room; can only be 1, 2, or 3.
-        [RegularExpression(@"[123]")]
-        [Display(Name = "Number of beds")]
+        [RegularExpression(@"[123]{1}")]
         public int BedCount { get; set; }
+
+        //Meaning the price per night; Between $50 and $300.
+        [DataType(DataType.Currency)]
+        [Range(50.0, 300.0)]
+        public decimal Price { get; set; }
 
         [DataType(DataType.Date)]
         [Display(Name = "Check-in date")]

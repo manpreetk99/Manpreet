@@ -33,3 +33,53 @@
         </form>
     </div>
 </div>
+
+@if (Model.AvailableRooms != null )
+{
+    <div>
+        <hr />
+        @if (Model.AvailableRooms.Count == 0)
+        {
+            <h4>There are no available rooms.</h4>
+        }
+        else
+        {
+            <table class="table">
+                <!-- .table is a Bootstrap class giving table styles -->
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AvailableRooms[0].ID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Level)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BedCount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model.AvailableRooms)
+                {
+                    <tr>
+                        <td>
+                            @item.ID
+                        </td>
+                        <td>
+                            @item.Level
+                        </td>
+                        <td>
+                            @item.BedCount
+                        </td>
+                        <td>
+                            @item.Price
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+    </div>
+}
