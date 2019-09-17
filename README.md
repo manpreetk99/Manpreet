@@ -32,12 +32,13 @@ This is our web systems development major project.
 * Booking.cs
 * Migration of above models to database
 * The My details link fully functional
-
-## To do
 * Search rooms link
 * Book a room link
 * My bookings link
 * Manage bookings link
+
+## To do
+
 * Statistics
 * Home page layout
 * Our own page styling.
