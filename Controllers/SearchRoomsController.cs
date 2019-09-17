@@ -48,12 +48,12 @@ namespace BadgerysCreekHotel.Controllers
 	            WHERE (date('2019-09-12 00:00:00') >= date(checkIn) and date('2019-09-12 00:00:00') <= date(checkOut)) or (date('2019-09-15 00:00:00') <= date(checkOut) and date('2019-09-15 00:00:00') >= date(CheckIn))
                 )
              */
-
         public async Task<IActionResult> SearchRooms([Bind("BedCount", "CheckIn", "CheckOut")] RoomSearch searchParameters)//
         {
             string query = "SELECT Room.ID, Level, BedCount, Booking.CheckIn, Booking.CheckOut, Booking.CustomerEmail, Room.Price " +
                 "FROM Room LEFT JOIN Booking ON Room.ID = Booking.RoomID " +
-                "WHERE Room.ID NOT IN(    " +
+                "WHERE BedCount = @BEDSNEEDED AND " +
+                "Room.ID NOT IN(    " +
                     "SELECT Room.ID " +
                     "FROM Room " +
                     "LEFT JOIN Booking " +
@@ -61,7 +61,8 @@ namespace BadgerysCreekHotel.Controllers
                     "WHERE (date(@INCOMINGSTART) >= date(checkIn) and date(@INCOMINGSTART) <= date(checkOut)) or (date(@INCOMINGEND) <= date(checkOut) and date(@INCOMINGEND) >= date(CheckIn)))";
             var occupationStart = new SqliteParameter("INCOMINGSTART", searchParameters.CheckIn);
             var occupationEnd = new SqliteParameter("INCOMINGEND", searchParameters.CheckOut);
-            var freeRooms = await _context.Room.FromSql(query, occupationStart, occupationEnd).ToListAsync();
+            var bedsNeeded = new SqliteParameter("BEDSNEEDED", searchParameters.BedCount);
+            var freeRooms = await _context.Room.FromSql(query, occupationStart, occupationEnd, bedsNeeded).ToListAsync();
             var newSearch = new Models.RoomSearch();
             newSearch.AvailableRooms = freeRooms;
             return View("~/Views/SearchRooms/SearchRooms.cshtml", newSearch);
