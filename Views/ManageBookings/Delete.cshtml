@@ -31,16 +31,34 @@
             @Html.DisplayFor(model => model.Cost)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.TheRoom)
+            @Html.DisplayNameFor(model => model.TheRoom.ID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TheRoom.ID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TheRoom.Level)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.TheRoom.Level)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.TheCustomer)
+            @Html.DisplayNameFor(model => model.TheRoom.BedCount)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.TheCustomer.Email)
+            @Html.DisplayFor(model => model.TheRoom.BedCount)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TheCustomer.Surname)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TheCustomer.Surname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TheCustomer.GivenName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TheCustomer.GivenName)
         </dd>
     </dl>
     

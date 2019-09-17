@@ -14,12 +14,15 @@ namespace BadgerysCreekHotel.Models
         //Foreign Key
         public int RoomID { get; set; }
 
+        [Display(Name = "E-mail address")]
         [DataType(DataType.EmailAddress)]
         public string CustomerEmail { get; set; }
 
+        [Display(Name = "Check-in date")]
         [DataType(DataType.Date)]
         public DateTime CheckIn { get; set; }
 
+        [Display(Name = "Check-out date")]
         [DataType(DataType.Date)]
         public DateTime CheckOut { get; set; }
 
