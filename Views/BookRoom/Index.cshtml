@@ -1,7 +1,88 @@
-﻿
+﻿@model BadgerysCreekHotel.Models.Booking
 @{
     ViewData["Title"] = "Index";
 }
 
-<h2>Book room mock page</h2>
+<h2>Book room</h2>
 
+<h4>Details</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="MakeBooking">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="RoomID" class="control-label"></label>
+                <input asp-for="RoomID" class="form-control" />
+                <span asp-validation-for="RoomID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CheckIn" class="control-label"></label>
+                <input asp-for="CheckIn" class="form-control" />
+                <span asp-validation-for="CheckIn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CheckOut" class="control-label"></label>
+                <input asp-for="CheckOut" class="form-control" />
+                <span asp-validation-for="CheckOut" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@if (Model != null && Model.TheRoom != null)
+{
+    <div>
+        <hr />
+        <table class="table">
+            <!-- .table is a Bootstrap class giving table styles -->
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.RoomID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TheRoom.Level)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CheckIn)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CheckOut)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cost)
+                </th>
+                <th></th>
+            </tr>
+
+            <tr>
+                <td>
+                    @Model.RoomID
+                </td>
+                <td>
+                    @Model.TheRoom.Level
+                </td>
+                <td>
+                    @Model.CheckIn
+                </td>
+                <td>
+                    @Model.CheckOut
+                </td>
+                <td>
+                    @Model.Cost
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+else if(Model != null)
+{
+    <div>
+        <h1>BOOKING UNAVAILABLE TRY A DIFFERENT DAY</h1>
+        <p>Try another day maybe or stay at home.</p>
+    </div>
+}

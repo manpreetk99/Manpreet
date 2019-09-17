@@ -63,8 +63,10 @@ namespace BadgerysCreekHotel.Controllers
             var occupationEnd = new SqliteParameter("INCOMINGEND", searchParameters.CheckOut);
             var bedsNeeded = new SqliteParameter("BEDSNEEDED", searchParameters.BedCount);
             var freeRooms = await _context.Room.FromSql(query, occupationStart, occupationEnd, bedsNeeded).ToListAsync();
-            var newSearch = new Models.RoomSearch();
-            newSearch.AvailableRooms = freeRooms;
+            var newSearch = new Models.RoomSearch
+            {
+                AvailableRooms = freeRooms
+            };
             return View("~/Views/SearchRooms/SearchRooms.cshtml", newSearch);
         }
     }
