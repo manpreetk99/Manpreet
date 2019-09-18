@@ -1,7 +1,6 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
 for details on configuring this project to bundle and minify static web assets. */
 body {
-    padding-top: 50px;
     padding-bottom: 20px;
 }
 
@@ -14,7 +13,7 @@ body {
 
 /* Carousel */
 .carousel-caption p {
-    font-size: 20px;
+    font-size: 26px;
     line-height: 1.4;
 }
 
@@ -26,6 +25,23 @@ body {
 /* QR code generator */
 #qrCode {
     margin: 15px;
+}
+/*BRAND LOGO*/
+.navbar-inverse .navbar-brand{
+    color: azure;
+}
+
+/*Navbar LINKS COLOR*/
+.navbar-inverse .navbar-nav > li > a {
+    color: azure;
+}
+.navbar-fixed-top, .navbar-fixed-bottom {
+    position: relative
+}
+
+.navbar {
+    background-color: #222a;
+    padding: 25px;
 }
 
 /* Hide/rearrange for smaller screens */
