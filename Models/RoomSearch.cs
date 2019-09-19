@@ -39,10 +39,12 @@ namespace BadgerysCreekHotel.Models
         public decimal Price { get; set; }
 
         [DataType(DataType.Date)]
+        [Required]
         [Display(Name = "Check-in date")]
         public DateTime CheckIn { get; set; }
 
         [DataType(DataType.Date)]
+        [Required]
         [Display(Name = "Check-out date")]
         public DateTime CheckOut { get; set; }
 

@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
-
+using BadgerysCreekHotel.Extension;
 namespace BadgerysCreekHotel.Controllers
 {
     [Authorize(Roles = "Customer")]
@@ -29,6 +29,10 @@ namespace BadgerysCreekHotel.Controllers
 
         public async Task<IActionResult> MakeBooking([Bind("RoomID, CheckIn, CheckOut")] Booking booking)
         {
+            if (booking.CheckIn.DaysOfStay(booking.CheckOut) < 1 || booking.RoomID < 1 || booking.RoomID > 16)
+            {
+                return View("~/Views/BookRoom/Index.cshtml", new Booking());
+            }
             //construct raw sql to see if we can make the booking
             string query = "SELECT Room.ID, Level, BedCount, Booking.CheckIn, Booking.CheckOut, Booking.CustomerEmail, Room.Price " +
                 "FROM Room LEFT JOIN Booking ON Room.ID = Booking.RoomID " +

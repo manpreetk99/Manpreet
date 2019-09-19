@@ -4,8 +4,6 @@
 }
 
 <h2>Book room</h2>
-
-<h4>Details</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -37,52 +35,56 @@
 @if (Model != null && Model.TheRoom != null)
 {
     <div>
+        <h3>Your booking was successful.</h3>
         <hr />
         <table class="table">
             <!-- .table is a Bootstrap class giving table styles -->
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.RoomID)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.TheRoom.Level)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CheckIn)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CheckOut)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Cost)
-                </th>
-                <th></th>
-            </tr>
-
-            <tr>
-                <td>
-                    @Model.RoomID
-                </td>
-                <td>
-                    @Model.TheRoom.Level
-                </td>
-                <td>
-                    @Model.CheckIn
-                </td>
-                <td>
-                    @Model.CheckOut
-                </td>
-                <td>
-                    @Model.Cost
-                </td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RoomID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TheRoom.Level)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CheckIn)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CheckOut)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Cost)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => model.RoomID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.TheRoom.Level)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.CheckIn)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.CheckOut)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Cost)
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </div>
 }
 else if(Model != null)
 {
     <div>
-        <h1>BOOKING UNAVAILABLE TRY A DIFFERENT DAY</h1>
-        <p>Try another day maybe or stay at home.</p>
+        <h2>Cannot make booking</h2>
+        <p>If the form submitted without error then perhaps the room is unavailable.</p>
     </div>
 }

@@ -12,6 +12,8 @@ namespace BadgerysCreekHotel.Models
         public int ID { get; set; }
 
         //Foreign Key
+        [Display(Name = "Room number")]
+        [Range(1,16)]
         public int RoomID { get; set; }
 
         [Display(Name = "E-mail address")]

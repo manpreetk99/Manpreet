@@ -8,6 +8,7 @@ namespace BadgerysCreekHotel.Models
 {
     public class Room
     {
+        [Display(Name = "Room number")]
         public int ID { get; set; }
 
         //Meaning the level of this room; Exactly one character of ‘G’, ‘1’, ‘2’, or ‘3’.Required.
@@ -18,6 +19,7 @@ namespace BadgerysCreekHotel.Models
 
         //Meaning the number of beds in the room; can only be 1, 2, or 3.
         [RegularExpression(@"[123]{1}")]
+        [Display(Name ="Number of beds")]
         public int BedCount { get; set; }
 
         //Meaning the price per night; Between $50 and $300.

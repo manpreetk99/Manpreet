@@ -18,6 +18,7 @@
 
             <div class="form-group">
                 <label asp-for="CheckIn" class="control-label"></label>
+
                 <input asp-for="CheckIn" class="form-control" />
                 <span asp-validation-for="CheckIn" class="text-danger"></span>
             </div>
@@ -45,40 +46,42 @@
         else
         {
             <table class="table">
-                <!-- .table is a Bootstrap class giving table styles -->
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.AvailableRooms[0].ID)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Level)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.BedCount)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Price)
-                    </th>
-                    <th></th>
-                </tr>
-
-                @foreach (var item in Model.AvailableRooms)
-                {
+                <thead>
                     <tr>
-                        <td>
-                            @item.ID
-                        </td>
-                        <td>
-                            @item.Level
-                        </td>
-                        <td>
-                            @item.BedCount
-                        </td>
-                        <td>
-                            @item.Price
-                        </td>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AvailableRooms[0].ID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Level)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BedCount)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Price)
+                        </th>
                     </tr>
-                }
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model.AvailableRooms)
+                    {
+                        <tr>
+                            <td>
+                                @item.ID
+                            </td>
+                            <td>
+                                @item.Level
+                            </td>
+                            <td>
+                                @item.BedCount
+                            </td>
+                            <td>
+                                @item.Price
+                            </td>
+                        </tr>
+                    }
+                </tbody>
             </table>
         }
     </div>

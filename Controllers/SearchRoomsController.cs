@@ -10,7 +10,7 @@ using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc.Rendering;
-
+using BadgerysCreekHotel.Extension;
 namespace BadgerysCreekHotel.Controllers
 {
     [Authorize(Roles = "Customer")]
@@ -50,6 +50,10 @@ namespace BadgerysCreekHotel.Controllers
              */
         public async Task<IActionResult> SearchRooms([Bind("BedCount", "CheckIn", "CheckOut")] RoomSearch searchParameters)//
         {
+            if (searchParameters.CheckIn.DaysOfStay(searchParameters.CheckOut) < 1)
+            {
+                return View(new Models.RoomSearch());
+            }
             string query = "SELECT Room.ID, Level, BedCount, Booking.CheckIn, Booking.CheckOut, Booking.CustomerEmail, Room.Price " +
                 "FROM Room LEFT JOIN Booking ON Room.ID = Booking.RoomID " +
                 "WHERE BedCount = @BEDSNEEDED AND " +
