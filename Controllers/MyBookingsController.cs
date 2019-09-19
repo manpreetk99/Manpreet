@@ -17,8 +17,12 @@ namespace BadgerysCreekHotel.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Bookings()
+        public async Task<IActionResult> Bookings(string sortOrder)
         {
+            if (String.IsNullOrEmpty(sortOrder))
+            {
+                sortOrder = "check-asc";
+            }
             string customer = User.FindFirst(ClaimTypes.Name).Value; // get logged in user name
             //var bookings = _context.Booking.Where(.ToList();
             var bookings =
@@ -32,6 +36,26 @@ namespace BadgerysCreekHotel.Controllers
                 var user = await _context.Customer.FindAsync(customer);
                 booking.TheCustomer = user;
             }
+            switch (sortOrder)
+            {
+                case "check-asc":
+                    bookings = bookings.OrderBy(b => b.CheckIn);
+                    break;
+                case "check-desc":
+                    bookings =bookings.OrderByDescending(b => b.CheckIn);
+                    break;
+                case "price-asc":
+                    bookings = bookings.OrderBy(b => b.Cost);
+                    break;
+                case "price-desc":
+                    bookings = bookings.OrderByDescending(b => b.Cost);
+                    break;
+                default:
+                    bookings = bookings.OrderBy(b => b.CheckIn);
+                    break;
+            }
+            ViewData["nextCheck"] = sortOrder != "check-asc" ? "check-asc" : "check-desc";
+            ViewData["nextPrice"] = sortOrder != "price-asc" ? "price-asc" : "price-desc";
             return View(bookings);
         }
     }
