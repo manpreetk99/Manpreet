@@ -38,6 +38,6 @@ This is our web systems development major project.
 * Manage bookings link
 * Statistics
 * Home page layout
-
+* Our own page styling. 
 ## To do
-* Our own page styling. [optional]
+Nothing
