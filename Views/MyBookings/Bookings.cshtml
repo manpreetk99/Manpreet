@@ -1,0 +1,66 @@
+﻿@model IEnumerable<BadgerysCreekHotel.Models.Booking>
+
+@{
+    ViewData["Title"] = "Bookings";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Bookings</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a id="CheckSort" asp-action="Bookings" asp-route-sortorder="@ViewData["nextCheck"]">
+                    @Html.DisplayNameFor(model => model.CheckIn)
+                </a>"
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CheckOut)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoomID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TheCustomer.Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TheCustomer.GivenName)
+            </th>
+
+            <th>
+                <a id="PriceSort" asp-action="Bookings" asp-route-sortorder="@ViewData["nextPrice"]">
+                    @Html.DisplayNameFor(model => model.Cost)
+                </a>"
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckIn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckOut)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TheCustomer.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TheCustomer.GivenName)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Cost)
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

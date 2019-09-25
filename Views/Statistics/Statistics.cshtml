@@ -1,0 +1,64 @@
+﻿@model BadgerysCreekHotel.ViewModels.StatView
+@{
+    ViewData["Title"] = "Stats";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    
+<h2>Customer distribution with respect to postcodes</h2>
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    PostCode
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.CustomerStats.Count)
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model.CustomerStats)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PostCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Count)
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
+<h2>Booking distribution with respect to rooms</h2>
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Rooms
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.CustomerStats.Count)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.RoomStats)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoomID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Count)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

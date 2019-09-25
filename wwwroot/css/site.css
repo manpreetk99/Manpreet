@@ -1,9 +1,125 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+﻿body {
+    font-family: Rubik, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100%;
+    background-color: rgba(234, 226, 246, 0.067)
+}
+
+label {
+    font-weight: 400;
+    font-size: 16px;
+    color: gray;
+    margin-bottom: 8px;
+}
+
+input.form-control {
+    height: 44px;
+}
+div.container:nth-child(2)>p:nth-child(2)>a:nth-child(1){
+    margin-left: 15px;
+    font-size: 17px;
+    font-family: Rubik, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+input.btn {
+    color: white;
+    background-color: #938;
+    padding: 17px;
+    font-size: 19px;
+    border-radius: 6px;
+}
+
+/* dancing-script-regular - latin */
+@font-face {
+    font-family: 'Dancing Script';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Dancing Script Regular'), local('DancingScript-Regular'),
+        url('../fonts/dancing-script-v11-latin-regular.woff2') format('woff2'),
+        /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('../fonts/dancing-script-v11-latin-regular.woff') format('woff');
+    /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+/* rubik-regular - latin */
+@font-face {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Rubik'), local('Rubik-Regular'),
+        url('../fonts/rubik-v9-latin-regular.woff2') format('woff2'),
+        /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('../fonts/rubik-v9-latin-regular.woff') format('woff');
+    /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\
 for details on configuring this project to bundle and minify static web assets. */
 body {
-    padding-top: 50px;
     padding-bottom: 20px;
 }
+
+table {
+    border-radius: 15px;
+    overflow: hidden;
+    border-collapse: collapse;
+}
+
+thead>tr {
+    background: #938;
+    height: 55px;
+}
+
+tr>td,
+tr>th {
+    border: none !important;
+    vertical-align: middle !important;
+}
+
+.table>thead:nth-child(1)>tr:nth-child(1)>th:nth-child(1) {
+    padding-left: 40px;
+}
+
+tr>th,
+tbody>tr {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 300;
+}
+
+#PriceSort,
+#CheckSort,
+tr>th {
+    color: white;
+
+}
+
+h2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 200;
+    padding: 12px;
+}
+
+tbody>tr {
+    color: darkslategrey;
+    font-size: 15px;
+    height: 50px;
+    font-weight: 400;
+
+}
+
+td:first-child {
+    padding-left: 40px !important;
+}
+
+tbody tr {
+    background-color: #ffffffab;
+}
+
+tbody tr:nth-child(2n) {
+    background-color: #9381;
+    ;
+}
+
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
@@ -14,13 +130,27 @@ body {
 
 /* Carousel */
 .carousel-caption p {
-    font-size: 20px;
+    font-size: 26px;
     line-height: 1.4;
+    text-shadow: 0px 0px 15px black,
+        0px 0px 25px black,
+        0px 0px 55px black,
+        0px 0px 75px black,
+        0px 0px 65px black,
+        0px 0px 45px black,
+        0px 0px 45px black,
+        0px 0px 25px black,
+        0px 0px 45px black,
+        0px 0px 35px black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 200;
 }
 
 /* Make .svg files in the carousel display properly in older browsers */
 .carousel-inner .item img[src$=".svg"] {
     width: 100%;
+    height: 800px;
+    overflow: hidden;
 }
 
 /* QR code generator */
@@ -28,8 +158,115 @@ body {
     margin: 15px;
 }
 
+div.icon {
+    width: 70px;
+}
+
+div.icon,
+div.text {
+    display: table-cell;
+}
+
+div.text {
+    padding-left: 30px;
+}
+
+.navbar-inverse {
+    background-color: rgba(255, 0, 234, 0);
+
+}
+
+div.longContainer {
+    background-color: #953e8e0a;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 0px 0px 20px 20px;
+}
+
+div.longContainer>h3 {
+    text-align: center;
+    font-family: "Dancing Script";
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 0.163em;
+}
+
+div.text>p,
+h3>span {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.85;
+    font-family: Rubik, sans-serif;
+    color: #7e8890;
+}
+
+div.text>h3 {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    line-height: 1.2;
+    font-weight: 300;
+}
+
+/*BRAND LOGO*/
+.navbar-inverse .navbar-brand {
+    color: #903479;
+}
+
+/*Navbar LINKS COLOR*/
+.navbar-inverse .navbar-nav>li>a,
+.btn-link {
+    color: #903479 !important;
+    line-height: 20px;
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 0em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0px;
+    padding: 15px;
+    border: none !important;
+}
+
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+    position: relative
+}
+
+.navbar {
+    border: none;
+    margin-bottom: 0px;
+}
+
+.navbar-brand {
+    font-family: "Dancing Script";
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+}
+
+div#overlayNavbar {
+    background-color: #953e8e0a;
+    width: 100%;
+    padding: 25px;
+}
+
+.navbar-right {
+    margin-right: 0px;
+}
+
+
+.container-fluid>.navbar-header,
+.container>.navbar-collapse,
+.container-fluid>.navbar-collapse {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.navbar-collapse {
+    max-width: 1500px;
+}
+
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
+
     /* Hide captions */
     .carousel-caption {
         display: none;

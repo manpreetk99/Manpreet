@@ -1,9 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+
+<!DOCTYPE html>
 <html>
 <head>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - BadgerysCreekHotel</title>
+    <title>@ViewData["Title"] - Badgerys Creek Hotel</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -15,28 +18,57 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">BadgerysCreekHotel</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                </ul>
-                <partial name="_LoginPartial" />
+        <div id="overlayNavbar">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Badgerys Creek Hotel</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                        @{
+                            var identity = User.Identity;
+                        }
+                        @if (User.IsInRole("Customer"))
+                        {
+                            <li><a asp-area="" asp-controller="MyDetails" asp-action="Index">My Details</a></li>
+                        }
+                        @if (User.IsInRole("Customer"))
+                        {
+                            <li><a asp-area="" asp-controller="BookRoom" asp-action="Index">Book A Room</a></li>
+                        }
+                        @if (User.IsInRole("Customer"))
+                        {
+                            <li><a asp-area="" asp-controller="SearchRooms" asp-action="Search">Search Rooms</a></li>
+                        }
+                        @if (User.IsInRole("Customer"))
+                        {
+                            <li><a asp-area="" asp-controller="MyBookings" asp-action="Bookings">My Bookings</a></li>
+                        }
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li><a asp-area="" asp-controller="ManageBookings" asp-action="Manage">Manage Bookings</a></li>
+                        }
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li><a asp-area="" asp-controller="Statistics" asp-action="Statistics">Statistics</a></li>
+                        }
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
             </div>
         </div>
+
     </nav>
 
     <partial name="_CookieConsentPartial" />
